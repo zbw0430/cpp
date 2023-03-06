@@ -30,6 +30,7 @@ public:
     Date operator+(int day);
     
     // d1 - 100
+    Date& operator-=(int day);
     Date operator-(int day);
 
     // d1 - d2;
@@ -40,6 +41,9 @@ public:
 
     // d1++
     Date operator++(int);
+    
+    Date& operator--();
+    Date operator--(int);
     
 private:
     int _year;

@@ -76,6 +76,12 @@ bool Date::operator>=(const Date& d)
 
 Date& Date::operator+=(int day)
 {
+    if(day < 0)
+    {
+        *this -= -day;
+        return *this;
+    }
+    
     _day += day;
     while(_day > GetMonthDay(_year, _month))
     {
@@ -111,3 +117,49 @@ Date Date::operator++(int)
 
     return tmp;
 }
+
+Date& Date::operator-=(int day)
+{
+    if(day < 0)
+    {
+        *this += -day;
+        return *this;
+    }
+    
+    _day -= day;
+    while(_day <= 0)
+    {
+        _month--;
+        if(_month == 0)
+        {
+            _year--;
+            _month = 12;
+        }
+        _day += GetMonthDay(_year, _month);
+    }
+    return *this;
+}
+
+Date Date::operator-(int day)
+{
+    Date tmp(*this);
+    *this -= day;
+    return tmp;
+}
+
+Date& Date::operator--()
+{
+    *this -= 1;
+    return *this;
+}
+
+Date Date::operator--(int)
+{
+    Date tmp(*this);
+
+    *this -= 1;
+
+    return tmp;
+}
+
+
