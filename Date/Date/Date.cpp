@@ -162,4 +162,32 @@ Date Date::operator--(int)
     return tmp;
 }
 
+int Date::operator-(const Date& d)
+{
+    Date max = *this;
+    Date min = d;
+    int flag = 1;
+    
+    if(*this < d)
+    {
+        max = d;
+        min = *this;
+        flag = -1;
+    }
+    
+    int count = 0;
+    while(min != max)
+    {
+        ++min;
+        ++count;
+    }
+    
+    return count*flag;
+}
+
+ostream& operator<<(ostream& out, const Date& d)
+{
+    out << d._year << "年" << d._month << "月" << d._day << "日" << endl;
+    return out;
+}
 

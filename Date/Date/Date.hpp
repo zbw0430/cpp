@@ -14,6 +14,7 @@ using namespace std;
 
 class Date
 {
+    friend ostream& operator<<(ostream& out, const Date& d);
 public:
     Date(int year = 2023, int month = 1, int day = 1);
     void print();
@@ -50,5 +51,7 @@ private:
     int _month;
     int _day;
 };
+
+ostream& operator<<(ostream& out, const Date& d);
 
 #endif /* Date_hpp */

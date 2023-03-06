@@ -13,7 +13,8 @@ void test()
     Date d2(2023, 1, 1);
     
     d1 += 100;
-    d1.print();
+    //d1.print();
+    cout << d1;
 }
 
 int main()
